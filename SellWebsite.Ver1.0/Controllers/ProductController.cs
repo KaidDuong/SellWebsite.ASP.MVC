@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SellWebsite.Ver1._0.Models;
+using System.Net;
 
 namespace SellWebsite.Ver1._0.Controllers
 {
     public class ProductController : Controller
     {
-        SalesManagerEntities db = new SalesManagerEntities();
+        QuanLyBanHang1Entities db = new QuanLyBanHang1Entities();
         // GET: Product
         // tao 2 partial view 1 va 2 de show sp len website
         //use childActiononly de tranh nguoi dung get vao view nay
@@ -23,5 +24,26 @@ namespace SellWebsite.Ver1._0.Controllers
         {
             return PartialView();
         }
+
+        /*
+         * Built paticulars web-side
+         */
+
+        public ActionResult XemChiTiet(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);//badrRequest = error 400
+              }
+            SanPham sanPham= db.SanPhams.SingleOrDefault(k => k.MaSP == id && k.DaXoa==false);
+            if (sanPham == null)
+            {
+                //thong bao neu nhu ko co san pham
+                return HttpNotFound();
+            }
+            return View(sanPham);
+        }
+
+
     }
 }

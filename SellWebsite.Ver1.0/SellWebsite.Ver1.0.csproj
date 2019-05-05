@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44366</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -540,6 +540,8 @@
     <Content Include="Views\Home\MenuPartial.cshtml" />
     <Content Include="Views\Product\ProductStylePartial1.cshtml" />
     <Content Include="Views\Product\ProductStylePartial2.cshtml" />
+    <Content Include="Views\Layout\ProductLayout.cshtml" />
+    <Content Include="Views\Product\XemChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
