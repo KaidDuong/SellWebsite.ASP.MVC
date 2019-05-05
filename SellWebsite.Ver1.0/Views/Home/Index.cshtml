@@ -1,0 +1,53 @@
+﻿@using SellWebsite.Ver1._0.Models;
+@model IEnumerable<SanPham>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+@*//use viewbag co the truyen nhieu gia tri tu controler thong qua view*@
+@{
+    //lay du lieu truyen tu HomeControler  qua view thong qua doi tuong ViewBag  
+    //co 2 cach ep kieu 
+    //c1
+    //IEnumerable<SanPham> listNewPhone = (IEnumerable<SanPham>)ViewBag.ListNewPhone;
+    ////c2: dung as de ep kieu ko phat sinh ra loi, va tra ve kieu null khi ko co du lieu
+    IEnumerable<SanPham> listNewLaptop = ViewBag.ListNewLaptop as IEnumerable<SanPham>;
+
+    //IEnumerable<SanPham> listNewTablet = ViewBag.ListNewTablet as IEnumerable<SanPham>;
+
+    List<IEnumerable<SanPham>> listNewProduct = new List<IEnumerable<SanPham>>();
+    //listNewProduct.Add(listNewPhone );
+    //listNewProduct.Add(listNewTablet );
+    //listNewProduct.Add(listNewLaptop );
+    listNewProduct.Add(ViewBag.ListNewPhone as IEnumerable<SanPham>);
+    listNewProduct.Add(ViewBag.ListNewTablet as IEnumerable<SanPham>);
+   // listNewProduct.Add(ViewBag.ListNewLaptop as IEnumerable<SanPham>);
+
+    //sau do ta tien hanh chuyen du lieu qua partialView
+}
+
+@* Step 1: tach code va long vao partial view *@
+@* Step 2: Gan du lieu tu controller thong qua viewBag vao partialView*@
+
+<div class="container">
+    @*//khi cung 1 thu 1, truyen 1 duong dan tuong doi laf ten cua 1 partialView ko phat sinh error
+        //nhung khi ta truyen 1 partialView cua 1 controller khac
+        thi phai truyen duong dan tuyet doi hoac dung duong dan tuong doi ../Product/ProductStyle1Partial.cshtml *@
+    <div class="content-top">
+        @foreach (var listProduct in listNewProduct)
+        {
+            <h1 style="color:darkblue ;">New @listProduct.First().LoaiSanPham.TenLoai</h1>
+            <div class="grid-in">
+                @Html.Partial("~/Views/Product/ProductStylePartial1.cshtml", listProduct);
+            </div>
+            <div class="clearfix"> </div>
+        }
+    </div>
+    <div class="content-top-bottom">
+        <h2>New @listNewLaptop.First().LoaiSanPham.TenLoai</h2>
+        @Html.Partial("~/Views/Product/ProductStylePartial2.cshtml", listNewLaptop);
+    </div>
+
+ </div>
