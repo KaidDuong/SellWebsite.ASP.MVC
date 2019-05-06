@@ -29,7 +29,7 @@ namespace SellWebsite.Ver1._0.Controllers
          * Built paticulars web-side
          */
 
-        public ActionResult XemChiTiet(int id)
+        public ActionResult XemChiTiet(int? id, string tenSp)
         {
             try
             {

@@ -12,7 +12,18 @@ namespace SellWebsite.Ver1._0
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            /*
+             * route configure to single xem thong tin san pham chi tiet
+             */
 
+            routes.MapRoute(
+                name: "Single",
+                url: "{tenSp}-{id}",
+                defaults: new {controller = "Product", action ="XemchiTiet",id=UrlParameter.Optional}
+                );
+            /*
+             * route default to index
+             */
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
