@@ -46,6 +46,33 @@ namespace SellWebsite.Ver1._0.Controllers
             }
                
         }
+        /*
+         * Build 1 action to load products by maLoaisanpham and manhasanxuat
+         */
+        public ActionResult Product(int? maLoaiSP, int ? maNSX)
+        {
+            try
+            {
+                //lay danh sach san pham theo maLoaiSP va MaNSX
+                var listProduct = db.SanPhams.Where
+                    (k => k.MaLoaiSP == maLoaiSP && 
+                    k.MaNSX == maNSX);
+
+                //CHECK xem ket qua tra ve co san pham nao hay ko
+                if (listProduct.Count() == 0)
+                {
+                    //thong bao ko co san pham
+                    return HttpNotFound();
+                }
+                return View(listProduct);
+            }
+            catch
+            {
+                // neu tham so truyen vao ko hop le
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
+        }
 
 
     }

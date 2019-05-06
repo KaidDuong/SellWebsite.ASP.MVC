@@ -543,6 +543,7 @@
     <Content Include="Views\Product\ProductStylePartial2.cshtml" />
     <Content Include="Views\Layout\ProductLayout.cshtml" />
     <Content Include="Views\Product\XemChiTiet.cshtml" />
+    <Content Include="Views\Product\Product.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
