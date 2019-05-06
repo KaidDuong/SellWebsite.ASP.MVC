@@ -1,53 +1,52 @@
-﻿@*@model IEnumerable<SellWebsite.Ver1._0.Models.SanPham>*@
+﻿@model SellWebsite.Ver1._0.Models.SanPham
 
 @{
     ViewBag.Title = "XemChiTiet";
     Layout = "~/Views/Layout/ProductLayout.cshtml";
+  
 }
+
 <div class="col-md-9 product-price1">
     <div class="col-md-5 single-top">
         <div class="flexslider">
+            <ul class="slides">
+                <li data-thumb="@Url.Content("../../Content/productImages/"+Model.HinhAnh)">
+                    <img src="@Url.Content("../../Content/productImages/"+Model.HinhAnh)">
+                </li>
+                <li data-thumb="@Url.Content("../../Content/productImages/"+Model.HinhAnh1)">
+                    <img src="@Url.Content("../../Content/productImages/"+Model.HinhAnh1)">
+                </li>
+                <li data-thumb="@Url.Content("../../Content/productImages/"+Model.HinhAnh2)">
+                    <img src="@Url.Content("../../Content/productImages/"+Model.HinhAnh2)">
+                </li>
+                <li data-thumb="@Url.Content("../../Content/productImages/"+Model.HinhAnh3)">
+                    <img src="@Url.Content("../../Content/productImages/"+Model.HinhAnh3)">
+                </li>
 
-            <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                <ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-482px, 0px, 0px);">
-                    <li data-thumb="images/si.jpg" class="clone" aria-hidden="true" style="width: 241px; float: left; display: block;">
-                        <img src="images/si.jpg" draggable="false">
-                    </li>
-                    <li data-thumb="images/si.jpg" style="width: 241px; float: left; display: block;" class="">
-                        <img src="images/si.jpg" draggable="false">
-                    </li>
-                    <li data-thumb="images/si1.jpg" class="flex-active-slide" style="width: 241px; float: left; display: block;">
-                        <img src="images/si1.jpg" draggable="false">
-                    </li>
-                    <li data-thumb="images/si2.jpg" class="" style="width: 241px; float: left; display: block;">
-                        <img src="images/si2.jpg" draggable="false">
-                    </li>
-                    <li data-thumb="images/si.jpg" class="" style="width: 241px; float: left; display: block;">
-                        <img src="images/si.jpg" draggable="false">
-                    </li>
-                    <li data-thumb="images/si.jpg" style="width: 241px; float: left; display: block;" class="clone" aria-hidden="true">
-                        <img src="images/si.jpg" draggable="false">
-                    </li>
-                </ul>
-            </div><ol class="flex-control-nav flex-control-thumbs"><li><img src="images/si.jpg" class="" draggable="false"></li><li><img src="images/si1.jpg" draggable="false" class="flex-active"></li><li><img src="images/si2.jpg" draggable="false" class=""></li><li><img src="images/si.jpg" draggable="false" class=""></li></ol><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li><li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li></ul>
+
+
+            </ul>
+            <ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li><li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li></ul>
+
+
         </div>
         <!-- FlexSlider -->
         <script defer="" src="~/Content/js/jquery.flexslider.js"></script>
         <link rel="stylesheet" href="~/Content/css/flexslider.css" type="text/css" media="screen">
 
         <script>
-// Can also be used with $(document).ready()
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    controlNav: "thumbnails"
-  });
-});
+            // Can also be used with $(document).ready()
+            $(window).load(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    controlNav: "thumbnails"
+                });
+            });
         </script>
     </div>
     <div class="col-md-7 single-top-in simpleCart_shelfItem">
         <div class="single-para ">
-            <h4>Lorem Ipsum</h4>
+            <h4 style="color:blue">@Model.TenSP</h4>
             <div class="star-on">
                 <ul class="star-footer">
                     <li><a href="#"><i> </i></a></li>
@@ -57,17 +56,15 @@ $(window).load(function() {
                     <li><a href="#"><i> </i></a></li>
                 </ul>
                 <div class="review">
-                    <a href="#"> 1 customer review </a>
+                    <a href="#"> @Model.LuotXem customer review </a>
 
                 </div>
                 <div class="clearfix"> </div>
             </div>
 
-            <h5 class="item_price">$ 95.00</h5>
+            <h5 class="item_price">@Model.DonGia.Value.ToString("#,##")  VND</h5>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod tincidunt ut laoreet dolore
-                magna aliquam erat
+                @Html.Raw(Model.CauHinh);
             </p>
             <div class="available">
                 <ul>
@@ -92,22 +89,14 @@ $(window).load(function() {
                     <div class="clearfix"> </div>
                 </ul>
             </div>
-            <ul class="tag-men">
-                <li>
-                    <span>TAG</span>
-                    <span class="women1">: Women,</span>
-                </li>
-                <li>
-                    <span>SKU</span>
-                    <span class="women1">: CK09</span>
-                </li>
-            </ul>
+
             <a href="#" class="add-cart item_add">ADD TO CART</a>
 
         </div>
     </div>
     <div class="clearfix"> </div>
     <!---->
+
     <div class="cd-tabs is-ended">
         <nav>
             <ul class="cd-tabs-navigation">
@@ -120,15 +109,7 @@ $(window).load(function() {
         <ul class="cd-tabs-content" style="height: auto;">
             <li data-content="fashion">
                 <div class="facts">
-                    <p> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
-                    <ul>
-                        <li>Research</li>
-                        <li>Design and Development</li>
-                        <li>Porting and Optimization</li>
-                        <li>System integration</li>
-                        <li>Verification, Validation and Testing</li>
-                        <li>Maintenance and Support</li>
-                    </ul>
+                    <p>@Html.Raw(Model.MoTa)</p>
                 </div>
 
             </li>
@@ -152,7 +133,7 @@ $(window).load(function() {
             <li data-content="television" class="selected">
                 <div class="comments-top-top">
                     <div class="top-comment-left">
-                        <img class="img-responsive" src="images/co.png" alt="">
+                        <img class="img-responsive" src="~/Content/images/co.png" alt="">
                     </div>
                     <div class="top-comment-right">
                         <h6><a href="#">Hendri</a> - September 3, 2014</h6>
@@ -173,44 +154,6 @@ $(window).load(function() {
             <div class="clearfix"></div>
         </ul>
     </div>
-    <div class=" bottom-product">
-        <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-            <div class="product-at ">
-                <a href="#">
-                    <img class="img-responsive" src="images/pi3.jpg" alt="">
-                    <div class="pro-grid">
-                        <span class="buy-in">Buy Now</span>
-                    </div>
-                </a>
-            </div>
-            <p class="tun">It is a long established fact that a reader</p>
-            <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
-        </div>
-        <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-            <div class="product-at ">
-                <a href="#">
-                    <img class="img-responsive" src="images/pi1.jpg" alt="">
-                    <div class="pro-grid">
-                        <span class="buy-in">Buy Now</span>
-                    </div>
-                </a>
-            </div>
-            <p class="tun">It is a long established fact that a reader</p>
-            <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
-        </div>
-        <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-            <div class="product-at ">
-                <a href="#">
-                    <img class="img-responsive" src="images/pi4.jpg" alt="">
-                    <div class="pro-grid">
-                        <span class="buy-in">Buy Now</span>
-                    </div>
-                </a>
-            </div>
-            <p class="tun">It is a long established fact that a reader</p>
-            <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
-        </div>
-        <div class="clearfix"> </div>
-    </div>
-</div>
-
+    <div class="clearfix"></div>
+   
+    <div />

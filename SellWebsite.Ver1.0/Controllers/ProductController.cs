@@ -31,17 +31,20 @@ namespace SellWebsite.Ver1._0.Controllers
 
         public ActionResult XemChiTiet(int id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);//badrRequest = error 400
-              }
-            SanPham sanPham= db.SanPhams.SingleOrDefault(k => k.MaSP == id && k.DaXoa==false);
-            if (sanPham == null)
-            {
-                //thong bao neu nhu ko co san pham
-                return HttpNotFound();
+                SanPham sanPham = db.SanPhams.SingleOrDefault(k => k.MaSP == id && k.DaXoa == false);
+                if (sanPham == null)
+                {
+                    //thong bao neu nhu ko co san pham
+                    return HttpNotFound();
+                }
+                return View(sanPham);
             }
-            return View(sanPham);
+            catch
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest);//badrRequest = error 400
+            }
+               
         }
 
 
