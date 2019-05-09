@@ -29,7 +29,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
     <!--header-->
     <div class="header">
-        <div class="header-top">
+        @Html.Partial("~/Views/Layout/HeaderTopPartial.cshtml")
+        @*<div class="header-top">
             <div class="container">
                 <div class="search">
                     <form>
@@ -61,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="clearfix"> </div>
             </div>
-        </div>
+        </div>*@
         <div class="container">
             <div class="head-top">
                 <div class="logo">
@@ -495,7 +496,7 @@ $(window).load(function() {
                                 <div class="color">
                                     <p>Color</p>
                                     <span>Blue, Black, Red</span>
-                                    <div class="clearfix"></div>
+                                  <div class="clearfix"></div>
                                 </div>
                                 <div class="color">
                                     <p>Size</p>

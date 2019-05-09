@@ -548,6 +548,7 @@
     <Content Include="Views\Product\XemChiTiet.cshtml" />
     <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Layout\HeaderTopPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
