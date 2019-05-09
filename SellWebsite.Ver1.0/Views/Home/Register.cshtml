@@ -1,0 +1,70 @@
+﻿@model SellWebsite.Ver1._0.Models.ThanhVien
+@using CaptchaMvc.HtmlHelpers;
+@using CaptchaMvc;
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+<div class=" container">
+    <div class=" register">
+        <h1>Register</h1>
+        @using (Html.BeginForm())
+        {
+
+            <div class="col-md-6 register-top-grid">
+                <h3>Personal infomation</h3>
+                <div>
+                    <span>Acount</span>
+                    @Html.TextBox("TaiKhoan")
+                </div>
+                <div>
+                    <span> Name</span>
+                    @Html.TextBox("HoTen")
+                </div>
+                <div>
+                    <span>Address</span>
+                    @Html.TextBox("DiaChi")
+                </div>
+                <div>
+                    <span>Email Address</span>
+                    @Html.TextBox("Email")
+                </div>
+                <div>
+                    <span>Phone</span>
+                    @Html.TextBox("SoDienThoai")
+                </div>
+                @*  <a class="news-letter" href="#">
+                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
+                    </a>*@
+            </div>
+            <div class="col-md-6 register-bottom-grid  register-top-grid">
+                <h3>Login information</h3>
+                <div>
+                    <span>Password</span>
+                    @Html.TextBox("MatKhau")
+                </div>
+                <div>
+                    <span>Confirm Password</span>
+                    @Html.TextBox("NhapLaiMatKhau")
+                </div>
+                <div>
+                    <span>Privacy Question</span>
+                    @Html.DropDownList("CauHoi")
+                </div>
+                <div>
+                    <span>Answer</span>
+                    @Html.TextBox("CauTraLoi")
+                </div>
+                @Html.MathCaptcha()
+
+                <input type="submit" value="Submit">
+
+            </div>
+            <div class="clearfix"> </div>
+        }
+    </div>
+</div>
+<h1 style="color:red "> @ViewBag.ThongBao</h1>
+
+
