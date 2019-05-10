@@ -30,6 +30,7 @@ namespace SellWebsite.Ver1._0.Controllers
             ViewBag.ListNewTablet = listNewTablet;
             return View();
         }
+  
         /*
          *Built  menu for website
              */
@@ -77,5 +78,25 @@ namespace SellWebsite.Ver1._0.Controllers
         //{
         //    return View();
         //}
+        //lay du lieu form dang nhap, va dieu huong ve trang sau dang nhap
+        [HttpPost]
+        public ActionResult Login( FormCollection form)
+        {
+            string sTaiKhoan = form["txtEmail"].ToString();
+            string sPassWord = form["txtPassword"].ToString();
+            ThanhVien tv = db.ThanhViens.SingleOrDefault(k => k.TaiKhoan == sTaiKhoan && k.MatKhau == sPassWord);
+            if(tv != null) {
+                Session["User"] = tv;
+                return RedirectToAction("Index");
+            }
+            
+            return RedirectToAction("Index");
+        }
+        //dang xuat, xoas bor session
+        public ActionResult Logout()
+        {
+            Session["User"] = null;
+           return RedirectToAction("Index");
+        }
     }
 }
